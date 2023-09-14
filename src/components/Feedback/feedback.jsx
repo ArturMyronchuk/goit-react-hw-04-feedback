@@ -31,7 +31,10 @@ const FeedbackWidget = () => {
   return (
     <div>
       <h1>Please leave your feedback</h1>
-      <FeedbackOptions onLeaveFeedback={handleFeedback} />
+      <FeedbackOptions
+        options={['good', 'neutral', 'bad']}
+        onLeaveFeedback={handleFeedback}
+      />
       <h2>Statistics</h2>
       {totalFeedback > 0 ? (
         <Statistics

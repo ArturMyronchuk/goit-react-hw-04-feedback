@@ -23,6 +23,8 @@ const FeedbackWidget = () => {
     }
   };
 
+  const feedbackTypes = Object.keys({ good, neutral, bad });
+
   const totalFeedback = good + neutral + bad;
   const positivePercentage = totalFeedback
     ? Math.round((good / totalFeedback) * 100)
@@ -30,23 +32,28 @@ const FeedbackWidget = () => {
 
   return (
     <div>
-      <h1>Please leave your feedback</h1>
-      <FeedbackOptions
-        options={['good', 'neutral', 'bad']}
-        onLeaveFeedback={handleFeedback}
-      />
-      <h2>Statistics</h2>
-      {totalFeedback > 0 ? (
-        <Statistics
-          good={good}
-          neutral={neutral}
-          bad={bad}
-          total={totalFeedback}
-          positivePercentage={positivePercentage}
+      <div>
+        <h1>Please leave your feedback</h1>
+        <FeedbackOptions
+          options={feedbackTypes}
+          onLeaveFeedback={handleFeedback}
         />
-      ) : (
-        <p>No feedback given</p>
-      )}
+      </div>
+
+      <div>
+        <h2>Statistics</h2>
+        {totalFeedback > 0 ? (
+          <Statistics
+            good={good}
+            neutral={neutral}
+            bad={bad}
+            total={totalFeedback}
+            positivePercentage={positivePercentage}
+          />
+        ) : (
+          <p>No feedback given</p>
+        )}
+      </div>
     </div>
   );
 };

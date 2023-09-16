@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import FeedbackOptions from './FeedbackOptions';
 import Statistics from './Statistics';
+import Section from './Section';
 
 const FeedbackWidget = () => {
   const [good, setGood] = useState(0);
@@ -32,16 +33,14 @@ const FeedbackWidget = () => {
 
   return (
     <div>
-      <div>
-        <h1>Please leave your feedback</h1>
+      <Section title="Please leave your feedback">
         <FeedbackOptions
           options={feedbackTypes}
           onLeaveFeedback={handleFeedback}
         />
-      </div>
+      </Section>
 
-      <div>
-        <h2>Statistics</h2>
+      <Section title="Statistics">
         {totalFeedback > 0 ? (
           <Statistics
             good={good}
@@ -53,7 +52,7 @@ const FeedbackWidget = () => {
         ) : (
           <p>No feedback given</p>
         )}
-      </div>
+      </Section>
     </div>
   );
 };
